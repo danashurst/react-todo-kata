@@ -2,9 +2,27 @@
     margin-top: 20px;
 }
 
-.form-input {
+.form-input, .form-input-valid, .form-input-invalid {
     border-radius: 6px;
     height: 20px;
+}
+
+.form-input:focus {
+    outline: none;
+}
+
+.form-input-valid {
+    border: 1px solid green;
+}
+
+.form-input-invalid {
+    border: 1px solid red;
+}
+
+.form-error-text {
+    color: red;
+    font-size: 14px;
+    font-style: italic;
 }
 
 .form-button {
@@ -13,4 +31,5 @@
     background-color: green;
     height: 25px;
     color: white;
+    margin-left: 5px;
 }
