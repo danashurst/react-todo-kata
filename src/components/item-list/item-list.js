@@ -3,7 +3,8 @@ import { ToDoListContext } from '../../contexts';
 import { 
     TODO_ITEM_REMOVE, 
     TODO_ITEM_UPDATE,
-    TODO_ITEM_EDIT
+    TODO_ITEM_EDIT,
+    TODO_ITEM_COMPLETED
 } from '../../reducers/action-types';
 import ItemMessage from '../item-message/item-message';
 import './item-list.scss';
@@ -32,16 +33,25 @@ const ItemList = () => {
             id: itemId
         });
     };
+
+    const onComplete = (itemId, completed) => {
+        todoItemsListDispatch({
+            type: TODO_ITEM_COMPLETED,
+            id: itemId,
+            completed
+        });
+    };
     
     return (
         todoItemsListState.map((item, index) => {
             return (
-                <div className='item-container' key={index}>
+                <div className={`${item.completed ? 'item-container-completed' : 'item-container'}`} key={index}>
                     <ItemMessage 
                         item={item} 
                         onUpdate={onUpdate} 
                         onDelete={onDelete}
-                        onEdit={onEdit} />
+                        onEdit={onEdit}
+                        onComplete={onComplete} />
                     <div className='item-created'>{item.created.toGMTString()}</div>
                 </div>
             )

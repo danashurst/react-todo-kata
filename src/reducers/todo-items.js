@@ -2,7 +2,8 @@ import {
     TODO_ITEM_ADD,
     TODO_ITEM_REMOVE,
     TODO_ITEM_EDIT,
-    TODO_ITEM_UPDATE
+    TODO_ITEM_UPDATE,
+    TODO_ITEM_COMPLETED
 } from './action-types';
 
 export const todoItemsInitialState = [];
@@ -15,7 +16,8 @@ export default (state = todoItemsInitialState, action) => {
                     id: action.id,
                     message: action.message,
                     created: action.created,
-                    isEditing: false
+                    isEditing: false,
+                    completed: false
                 }
             ];
 
@@ -41,6 +43,16 @@ export default (state = todoItemsInitialState, action) => {
                 if (item.id === action.id) {
                     item.message = action.message;
                     item.isEditing = false;
+                } 
+
+                return item;
+            }); 
+        }
+
+        case TODO_ITEM_COMPLETED: {
+            return state.map((item) => {
+                if (item.id === action.id) {
+                    item.completed = action.completed;
                 } 
 
                 return item;

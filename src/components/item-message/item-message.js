@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ItemActions from '../item-actions/item-actions';
+import './item-message.scss';
 
-const ItemMessage = ({item, onUpdate, onDelete, onEdit}) => {
+const ItemMessage = ({item, onUpdate, onDelete, onEdit, onComplete}) => {
     const [state, setState] = useState(item.message);
 
     const onChange = (e) => {
@@ -20,6 +21,10 @@ const ItemMessage = ({item, onUpdate, onDelete, onEdit}) => {
         onEdit(itemId);
     };
 
+    const onCompletedClick = (itemId, completed) => {
+        onComplete(itemId, completed);
+    };
+
     return (
         <React.Fragment>
             {
@@ -27,14 +32,15 @@ const ItemMessage = ({item, onUpdate, onDelete, onEdit}) => {
                 ?
                     <input className='item-message' onChange={onChange} value={state} />
                 :
-                    <div className="item-message">{item.message}</div>
+                    <div className={`${item.completed ? 'item-message-complete' : 'item-message'}`}>{item.message}</div>
             }
 
             <ItemActions 
                 item={item}
                 onUpdate={onUpdateClick}
                 onDelete={onDeleteClick}
-                onEdit={onEditClick} />
+                onEdit={onEditClick}
+                onComplete={onCompletedClick} />
         </React.Fragment>
     )
 };

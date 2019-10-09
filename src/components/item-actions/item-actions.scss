@@ -1,0 +1,28 @@
+.item-change-container {
+    float: right;
+}
+
+.item-change-edit, .item-change-delete, .item-change-update {
+    border-radius: 4px;
+    height: 22px;
+    width: 60px;
+}
+
+.item-change-edit {
+    border: 1px solid orange;
+    background-color: orange;
+}
+
+.item-change-delete {
+    border: 1px solid red;
+    background-color: red;
+}
+
+.item-change-update {
+    border: 1px solid #28c728;
+    background-color: #28c728;
+}
+
+.item-change-container button:not(:first-child) {
+    margin-left: 10px;
+}
