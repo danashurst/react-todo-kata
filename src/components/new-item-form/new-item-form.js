@@ -20,6 +20,8 @@ const NewItemForm = () => {
             message: newItemState,
             created: date
         });
+
+        newItemDispatch('');
     };
 
     return (
