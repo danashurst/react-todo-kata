@@ -1,7 +1,14 @@
 import React from 'react';
 import './item-actions.scss';
 
-const ItemActions = ({item, onUpdate, onUpdateCancel, onEdit, onDelete, onComplete}) => {
+const ItemActions = ({
+    item, 
+    onUpdate, 
+    onUpdateCancel, 
+    onEdit, 
+    onDelete, 
+    onComplete
+}) => {
     const onUpdateClick = (itemId) => {
         onUpdate(itemId);
     };

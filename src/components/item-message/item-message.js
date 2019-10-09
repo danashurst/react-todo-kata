@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import ItemActions from '../item-actions/item-actions';
 import './item-message.scss';
 
-const ItemMessage = ({item, onUpdate, onUpdateCancel, onDelete, onEdit, onComplete}) => {
+const ItemMessage = ({
+    item, 
+    onUpdate, 
+    onUpdateCancel, 
+    onDelete, 
+    onEdit, 
+    onComplete
+}) => {
     const [state, setState] = useState(item.message);
 
     const onChange = (e) => {
