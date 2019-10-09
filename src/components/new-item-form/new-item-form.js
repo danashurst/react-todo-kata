@@ -16,7 +16,7 @@ const NewItemForm = () => {
 
         todoListItemsDispatch({
             type: TODO_ITEM_ADD,
-            id: date.getMilliseconds(),
+            id: date.getTime(),
             message: newItemState,
             created: date
         });
