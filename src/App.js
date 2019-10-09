@@ -6,15 +6,11 @@ import Todos from './components/todos';
 const App = () => (
   <div className="container">
     <header>
-      <h1 align="center">React Interview Test</h1>
-      <h2>Paul Morris</h2>
+      <h2 align="center">React Interview Test</h2>
+      <h4 align="center">Paul Morris</h4>
     </header>
-    <section>
-      <article>
-        <p>Todos</p>
-        <Todos />
-      </article>
-    </section>
+    <h1 align="center">Todos</h1>
+    <Todos />
   </div>
 );
 

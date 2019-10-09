@@ -9,8 +9,15 @@ const Todos = () => {
 
     const updateNewItem = (e) => {
         setNewItemDescription(e.target.value)
+
+
     };
 
+    const keyPress = (e) => {
+        if (e.key === 'Enter') {
+            addItem();
+        };
+    }
 
     const addItem = () => {
         if (newItemDescription == null || newItemDescription === '') { return; }
@@ -62,6 +69,7 @@ const Todos = () => {
             <input
                 value={newItemDescription}
                 onChange={updateNewItem}
+                onKeyPress={keyPress}
                 placeholder="Enter new todo item" />
             <button onClick={addItem}>Add New Item</button>
             <button onClick={removeCompleteItems}>Remove complete items</button>

@@ -7,12 +7,17 @@ body {
 }
 
 h1 {
+    color: black;;
+}
+
+h2 {
     color: rgb(250, 61, 81);
 }
 
 button {
     margin: 6px;
     padding: 6px;
+    border-radius: 10px;
 }
 
 button {
@@ -28,6 +33,8 @@ button {
 .delete {
     background-color: red;
     color: white;
+    // display: flex;
+    // align-items: flex-end;
 }
 
 .complete {
@@ -43,12 +50,24 @@ button {
     margin-bottom: 6px;
     border-radius: 3px;
     display: flex;
-    // align-items: center;
-    // justify-content: space-between;
   }
+.todo div {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    display:flex; justify-content:flex-end; width:100%; padding:0;
+}
 
+// .action-buttons {
+//    float: right;
+// }
+
+.desc {
+    display: flex;
+    align-items: left;
+    font-size: 16px;
+}
 .container {
-    // display: flex;
     margin: 0 auto;
     padding: 10px;
     width: 1000px;
