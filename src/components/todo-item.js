@@ -1,13 +1,16 @@
-import React from 'react'
 
-const TodoItem = ({ item, onEdit, onDelete }) => {
+import React from 'react'
+import '../styles/main.scss';
+
+const TodoItem = ({ item, onEdit, onDelete, onComplete }) => {
+    const completeButtonText = item.done ? "Redo" : "Complete"
     return (
-        <div>
-            <div>{item.description}</div>
-            <input type="checkbox" value={item.done} />
-            <button onClick={() => onEdit(item)}>Edit</button>
-            <button onClick={() => onDelete(item)}>Delete</button>
-        </div>
+        < div className="todo" >
+            <div style={{ textDecoration: item.done ? "line-through" : "" }}>{item.description}</div>
+            <button className="complete" onClick={() => onComplete(item)}>{completeButtonText}</button>
+            <button className="edit" onClick={() => onEdit(item)}>Edit</button>
+            <button className="delete" onClick={() => onDelete(item)}>Delete</button>
+        </div >
     )
 }
 

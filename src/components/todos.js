@@ -3,7 +3,7 @@ import TodoItem from './todo-item';
 import mock_todos from '../mock-data/mock-todos';
 
 const Todos = () => {
-    const [items, setItems] = useState(mock_todos)
+    const [todos, setTodos] = useState(mock_todos)
 
     const [newItemDescription, setNewItemDescription] = useState('');
 
@@ -13,14 +13,16 @@ const Todos = () => {
 
 
     const addItem = () => {
-        const id = items.length + 1;
+        if (newItemDescription == null || newItemDescription === '') { return; }
+
+        const id = todos.length + 1;
         const newItem = { id, description: newItemDescription, done: false }
-        setItems([...items, newItem]);
+        setTodos([...todos, newItem]);
         setNewItemDescription('');
     }
 
     const deleteItem = (delete_item) => {
-        setItems(items.filter(item => item.id !== delete_item.id))
+        setTodos(todos.filter(item => item.id !== delete_item.id))
     }
 
     const editItem = (edit_item) => {
@@ -29,19 +31,29 @@ const Todos = () => {
             return;
         }
         const editedItem = { ...edit_item, description };
-        setItems(items.map(item => {
+        setTodos(todos.map(item => {
             return item.id === edit_item.id ? editedItem : item
         }))
     }
 
+    const toggleComplete = (complete_item) => {
+        const completeItem = { ...complete_item, done: !complete_item.done };
+        setTodos(todos.map(item => {
+            return item.id === complete_item.id ? completeItem : item
+        }))
+    };
+
+    const removeCompleteItems = () => {
+        setTodos(todos.filter(item => !item.done))
+    };
+
     return (
         <div>
             {
-                items.map(item => {
+                todos.map(item => {
                     return (
                         <React.Fragment>
-                            <TodoItem item={item} key={item.id} onEdit={editItem} onDelete={deleteItem} />
-                            <br />
+                            <TodoItem item={item} key={item.id} onEdit={editItem} onDelete={deleteItem} onComplete={toggleComplete} />
                         </React.Fragment>
                     )
                 })
@@ -52,6 +64,7 @@ const Todos = () => {
                 onChange={updateNewItem}
                 placeholder="Enter new todo item" />
             <button onClick={addItem}>Add New Item</button>
+            <button onClick={removeCompleteItems}>Remove complete items</button>
         </div>
     )
 }

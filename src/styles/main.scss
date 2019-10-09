@@ -10,12 +10,46 @@ h1 {
     color: rgb(250, 61, 81);
 }
 
+button {
+    margin: 6px;
+    padding: 6px;
+}
+
+button {
+    margin: 6px;
+    padding: 6px;
+}
+
+.edit {
+    background-color: yellow;
+    color: black;
+}
+
+.delete {
+    background-color: red;
+    color: white;
+}
+
+.complete {
+    background-color: cadetblue;
+    color: white;
+}
+
+.todo {
+    background: #fff;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    padding: 3px 10px;
+    font-size: 12px;
+    margin-bottom: 6px;
+    border-radius: 3px;
+    display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+  }
+
 .container {
+    // display: flex;
     margin: 0 auto;
     padding: 10px;
     width: 1000px;
-}
-
-.done {
-    color: lightgray
 }
