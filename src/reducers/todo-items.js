@@ -26,13 +26,10 @@ export default (state = todoItemsInitialState, action) => {
         }
 
         case TODO_ITEM_EDIT: {
-            return state.map((item) => {
-                if (item.id === action.id) {
-                    item.isEditing = true;
-                } 
-
-                return item;
-            });
+            return state.map((item) => ({ 
+                ...item, 
+                isEditing: (item.id === action.id)
+            }));
         }
 
         case TODO_ITEM_REMOVE: {
@@ -41,12 +38,11 @@ export default (state = todoItemsInitialState, action) => {
 
         case TODO_ITEM_UPDATE: {
             return state.map((item) => {
-                if (item.id === action.id) {
-                    item.message = action.message;
-                    item.isEditing = false;
-                } 
-
-                return item;
+                return (item.id !== action.id) ? item : {
+                    ...item,
+                    message: action.message,
+                    isEditing: false
+                };
             }); 
         }
 

@@ -9,22 +9,6 @@ const ItemActions = ({
     onDelete, 
     onComplete
 }) => {
-    const onUpdateClick = (itemId) => {
-        onUpdate(itemId);
-    };
-
-    const onUpdateCancelClick = (itemId) => {
-        onUpdateCancel(itemId);
-    };
-
-    const onDeleteClick = (itemId) => {
-        onDelete(itemId);
-    };
-
-    const onEditClick = (itemId) => {
-        onEdit(itemId);
-    };
-
     const onCompleteClick = (e, itemId) => {
         onComplete(itemId, e.target.checked);
     };
@@ -42,20 +26,20 @@ const ItemActions = ({
                     <React.Fragment>
                         <button 
                             className='item-change-update' 
-                            onClick={() => onUpdateClick(item.id)}>Update</button>
+                            onClick={() => onUpdate(item.id)}>Update</button>
 
                         <button 
                             className='item-change-update-cancel' 
-                            onClick={() => onUpdateCancelClick(item.id)}>Cancel</button>
+                            onClick={() => onUpdateCancel(item.id)}>Cancel</button>
                     </React.Fragment>
                 )
             : 
                 <button 
                     className='item-change-edit' 
-                    onClick={() => onEditClick(item.id)}>Edit</button>
+                    onClick={() => onEdit(item.id)}>Edit</button>
             }
 
-            <button className='item-change-delete' onClick={() => onDeleteClick(item.id)}>Delete</button>
+            <button className='item-change-delete' onClick={() => onDelete(item.id)}>Delete</button>
         </div>
     )
 };

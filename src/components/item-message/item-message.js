@@ -10,30 +10,14 @@ const ItemMessage = ({
     onEdit, 
     onComplete
 }) => {
-    const [state, setState] = useState(item.message);
+    const [newMessage, setNewMessage] = useState(item.message);
 
     const onChange = (e) => {
-        setState(e.target.value);
+        setNewMessage(e.target.value);
     };
 
     const onUpdateClick = () => {
-        onUpdate(item, state);
-    };
-
-    const onUpdateCancelClick = (itemId) => {
-        onUpdateCancel(itemId);
-    };
-
-    const onDeleteClick = () => {
-        onDelete(item.id);
-    };
-
-    const onEditClick = (itemId) => {
-        onEdit(itemId);
-    };
-
-    const onCompletedClick = (itemId, completed) => {
-        onComplete(itemId, completed);
+        onUpdate(item, newMessage);
     };
 
     return (
@@ -41,7 +25,7 @@ const ItemMessage = ({
             {
                 item.isEditing 
                 ?
-                    <input className='item-message' onChange={onChange} value={state} />
+                    <input className='item-message' onChange={onChange} value={newMessage} />
                 :
                     <div className={`${item.completed ? 'item-message-complete' : 'item-message'}`}>{item.message}</div>
             }
@@ -49,10 +33,10 @@ const ItemMessage = ({
             <ItemActions 
                 item={item}
                 onUpdate={onUpdateClick}
-                onUpdateCancel={onUpdateCancelClick}
-                onDelete={onDeleteClick}
-                onEdit={onEditClick}
-                onComplete={onCompletedClick} />
+                onUpdateCancel={onUpdateCancel}
+                onDelete={onDelete}
+                onEdit={onEdit}
+                onComplete={onComplete} />
         </React.Fragment>
     )
 };

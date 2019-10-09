@@ -9,8 +9,12 @@
     background-color: #94f18f;
 }
 
-.item-container:not(:first-child) {
+.item-container {
     margin-top: 10px;
+}
+
+.item-container:nth-child(2) {
+    margin-top: 0px;
 }
 
 .item-created {
