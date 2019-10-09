@@ -2,13 +2,16 @@
     float: right;
 }
 
-.item-change-edit, .item-change-delete, .item-change-update {
+.item-change-edit, 
+.item-change-delete, 
+.item-change-update, 
+.item-change-update-cancel {
     border-radius: 4px;
     height: 22px;
     width: 60px;
 }
 
-.item-change-edit {
+.item-change-edit, .item-change-update-cancel {
     border: 1px solid orange;
     background-color: orange;
 }

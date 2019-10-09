@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ItemActions from '../item-actions/item-actions';
 import './item-message.scss';
 
-const ItemMessage = ({item, onUpdate, onDelete, onEdit, onComplete}) => {
+const ItemMessage = ({item, onUpdate, onUpdateCancel, onDelete, onEdit, onComplete}) => {
     const [state, setState] = useState(item.message);
 
     const onChange = (e) => {
@@ -11,6 +11,10 @@ const ItemMessage = ({item, onUpdate, onDelete, onEdit, onComplete}) => {
 
     const onUpdateClick = () => {
         onUpdate(item, state);
+    };
+
+    const onUpdateCancelClick = (itemId) => {
+        onUpdateCancel(itemId);
     };
 
     const onDeleteClick = () => {
@@ -38,6 +42,7 @@ const ItemMessage = ({item, onUpdate, onDelete, onEdit, onComplete}) => {
             <ItemActions 
                 item={item}
                 onUpdate={onUpdateClick}
+                onUpdateCancel={onUpdateCancelClick}
                 onDelete={onDeleteClick}
                 onEdit={onEditClick}
                 onComplete={onCompletedClick} />

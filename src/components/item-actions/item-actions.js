@@ -1,9 +1,13 @@
 import React from 'react';
 import './item-actions.scss';
 
-const ItemActions = ({item, onUpdate, onEdit, onDelete, onComplete}) => {
+const ItemActions = ({item, onUpdate, onUpdateCancel, onEdit, onDelete, onComplete}) => {
     const onUpdateClick = (itemId) => {
         onUpdate(itemId);
+    };
+
+    const onUpdateCancelClick = (itemId) => {
+        onUpdateCancel(itemId);
     };
 
     const onDeleteClick = (itemId) => {
@@ -27,10 +31,17 @@ const ItemActions = ({item, onUpdate, onEdit, onDelete, onComplete}) => {
                 value={item.completed} />
                 
             {
-                item.isEditing ?
-                <button 
-                    className='item-change-update' 
-                    onClick={() => onUpdateClick(item.id)}>Update</button>
+                item.isEditing ? (
+                    <React.Fragment>
+                        <button 
+                            className='item-change-update' 
+                            onClick={() => onUpdateClick(item.id)}>Update</button>
+
+                        <button 
+                            className='item-change-update-cancel' 
+                            onClick={() => onUpdateCancelClick(item.id)}>Cancel</button>
+                    </React.Fragment>
+                )
             : 
                 <button 
                     className='item-change-edit' 

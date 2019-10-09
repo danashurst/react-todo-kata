@@ -3,6 +3,7 @@ import { ToDoListContext } from '../../contexts';
 import { 
     TODO_ITEM_REMOVE, 
     TODO_ITEM_UPDATE,
+    TODO_ITEM_UPDATE_CANCEL,
     TODO_ITEM_EDIT,
     TODO_ITEM_COMPLETED
 } from '../../reducers/action-types';
@@ -24,6 +25,13 @@ const ItemList = () => {
             type: TODO_ITEM_UPDATE,
             id: item.id,
             message
+        });
+    };
+
+    const onUpdateCancel = (itemId) => {
+        todoItemsListDispatch({
+            type: TODO_ITEM_UPDATE_CANCEL,
+            id: itemId
         });
     };
 
@@ -49,6 +57,7 @@ const ItemList = () => {
                     <ItemMessage 
                         item={item} 
                         onUpdate={onUpdate} 
+                        onUpdateCancel={onUpdateCancel}
                         onDelete={onDelete}
                         onEdit={onEdit}
                         onComplete={onComplete} />

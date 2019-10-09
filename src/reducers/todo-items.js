@@ -3,7 +3,8 @@ import {
     TODO_ITEM_REMOVE,
     TODO_ITEM_EDIT,
     TODO_ITEM_UPDATE,
-    TODO_ITEM_COMPLETED
+    TODO_ITEM_COMPLETED,
+    TODO_ITEM_UPDATE_CANCEL
 } from './action-types';
 
 export const todoItemsInitialState = [];
@@ -42,6 +43,16 @@ export default (state = todoItemsInitialState, action) => {
             return state.map((item) => {
                 if (item.id === action.id) {
                     item.message = action.message;
+                    item.isEditing = false;
+                } 
+
+                return item;
+            }); 
+        }
+
+        case TODO_ITEM_UPDATE_CANCEL: {
+            return state.map((item) => {
+                if (item.id === action.id) {
                     item.isEditing = false;
                 } 
 
