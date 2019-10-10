@@ -1,57 +1,47 @@
 import React, { useState, useReducer } from 'react';
 import TodoItem from './todo-item';
-import mock_todos from '../mock-data/mock-todos';
+import mock_todos from '../mock-data/mock_todos';
+import todo_reducer from '../reducers/todo_reducer';
 
 const Todos = () => {
-    const [todos, setTodos] = useState(mock_todos)
+    const [newTodoDescription, setNewTodoDescription] = useState('');
 
-    const [newItemDescription, setNewItemDescription] = useState('');
+    const [todos, dispatch] = useReducer(todo_reducer, mock_todos);
 
-    const updateNewItem = (e) => {
-        setNewItemDescription(e.target.value)
-
-
+    const updateNewTodo = (e) => {
+        setNewTodoDescription(e.target.value)
     };
 
     const keyPress = (e) => {
         if (e.key === 'Enter') {
-            addItem();
+            addTodo();
         };
     }
 
-    const addItem = () => {
-        if (newItemDescription == null || newItemDescription === '') { return; }
+    const addTodo = () => {
+        if (newTodoDescription == null || newTodoDescription === '') { return; }
 
-        const id = todos.length + 1;
-        const newItem = { id, description: newItemDescription, done: false }
-        setTodos([...todos, newItem]);
-        setNewItemDescription('');
+        dispatch({ type: "ADD", payload: { description: newTodoDescription } });
     }
 
-    const deleteItem = (delete_item) => {
-        setTodos(todos.filter(item => item.id !== delete_item.id))
+    const deleteTodo = (deleteTodo) => {
+        dispatch({ type: "DELETE", payload: { deleteTodo } });
     }
 
-    const editItem = (edit_item) => {
-        const description = prompt("Edit value", edit_item.description);
-        if (description == null || description === '') {
+    const editTodo = (editTodo) => {
+        const editDescription = prompt("Edit value", editTodo.description);
+        if (editDescription == null || editDescription === '') {
             return;
-        }
-        const editedItem = { ...edit_item, description };
-        setTodos(todos.map(item => {
-            return item.id === edit_item.id ? editedItem : item
-        }))
+        };
+        dispatch({ type: "EDIT", payload: { editTodo, editDescription } });
     }
 
-    const toggleComplete = (complete_item) => {
-        const completeItem = { ...complete_item, done: !complete_item.done };
-        setTodos(todos.map(item => {
-            return item.id === complete_item.id ? completeItem : item
-        }))
+    const toggleDone = (toggleTodo) => {
+        dispatch({ type: "TOGGLE_DONE", payload: { toggleTodo } })
     };
 
     const removeCompleteItems = () => {
-        setTodos(todos.filter(item => !item.done))
+        dispatch({ type: "REMOVE_DONE" });
     };
 
     return (
@@ -60,18 +50,18 @@ const Todos = () => {
                 todos.map(item => {
                     return (
                         <React.Fragment>
-                            <TodoItem item={item} key={item.id} onEdit={editItem} onDelete={deleteItem} onComplete={toggleComplete} />
+                            <TodoItem item={item} key={item.id} onEdit={editTodo} onDelete={deleteTodo} onComplete={toggleDone} />
                         </React.Fragment>
                     )
                 })
             }
             <hr />
             <input
-                value={newItemDescription}
-                onChange={updateNewItem}
+                value={newTodoDescription}
+                onChange={updateNewTodo}
                 onKeyPress={keyPress}
                 placeholder="Enter new todo item" />
-            <button onClick={addItem}>Add New Item</button>
+            <button onClick={addTodo}>Add New Item</button>
             <button onClick={removeCompleteItems}>Remove complete items</button>
         </div>
     )
