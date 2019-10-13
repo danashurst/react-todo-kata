@@ -61,8 +61,8 @@ const Todos = () => {
                 onChange={updateNewTodo}
                 onKeyPress={keyPress}
                 placeholder="Enter new todo item" />
-            <button onClick={addTodo}>Add New Item</button>
-            <button onClick={removeCompleteItems}>Remove complete items</button>
+            <button className="add-new" onClick={addTodo}>Add New Item</button>
+            <button className="remove-done" onClick={removeCompleteItems}>Remove complete items</button>
         </div>
     )
 }
