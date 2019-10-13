@@ -1,26 +1,29 @@
 body {
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
     padding: 0;
     color: black;
 }
 
 .header{
     background-color: cadetblue;
-    padding: 20px;
+    padding: 15px;
     align-content: center;
+    display: flex;
 }
 
 .todo-header{
     font-size: 20px;
-    display: inline;
+    width:97%;
+}
+
+.todo-header span {
     text-align: center;
-    align-content: center;
     color: white;
     border: 4px solid white;
     padding:4px;
     border-radius: 15px;
+   
 }
 
 .flex-container {
@@ -33,25 +36,50 @@ body {
     margin: 5px;
 }
 
+.flex-container:hover {
+    background-color: lightgreen;
+}
+
 .desc {
     width: 88%;
-    //flex-grow: 9;
     min-width: 500px;
 }
 
 .done {
-    //flex-grow: 1;
     min-width: 4%;
     text-align: center;
 }
 .edit {
-   // flex-grow: 1;
    min-width: 4%;
    text-align: center;
 }
 
 .delete {
-   //flex-grow: 1;
    min-width: 4%;
    text-align: center;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-content: center;
+    margin:4px;
+}
+
+.actions input {
+    font-size: 15px;
+    padding: 4px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid lightslategrey;
+    width: 100%;
+    margin: 4px 0;
+}
+
+.remove-done {
+    align-content: center;
+    font-size: 1.5em;
+    color: red;
 }

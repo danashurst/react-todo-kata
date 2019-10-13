@@ -5,7 +5,6 @@ import todo_reducer from '../reducers/todo_reducer';
 
 const Todos = () => {
     const [newTodoDescription, setNewTodoDescription] = useState('');
-
     const [todos, dispatch] = useReducer(todo_reducer, mock_todos);
 
     const updateNewTodo = (e) => {
@@ -22,6 +21,7 @@ const Todos = () => {
         if (newTodoDescription == null || newTodoDescription === '') { return; }
 
         dispatch({ type: "ADD", payload: { description: newTodoDescription } });
+        setNewTodoDescription('');
     }
 
     const deleteTodo = (deleteTodo) => {
@@ -40,30 +40,23 @@ const Todos = () => {
         dispatch({ type: "TOGGLE_DONE", payload: { toggleTodo } })
     };
 
-    const removeCompleteItems = () => {
-        dispatch({ type: "REMOVE_DONE" });
-    };
-
     return (
         <div>
             {
                 todos.map(item => {
                     return (
-                        <React.Fragment>
-                            <TodoItem item={item} key={item.id} onEdit={editTodo} onDelete={deleteTodo} onComplete={toggleDone} />
-                        </React.Fragment>
+                        <TodoItem item={item} key={item.id} onEdit={editTodo} onDelete={deleteTodo} onComplete={toggleDone} />
                     )
                 })
             }
-            <hr />
-            <input
-                value={newTodoDescription}
-                onChange={updateNewTodo}
-                onKeyPress={keyPress}
-                placeholder="Enter new todo item" />
-            <button className="add-new" onClick={addTodo}>Add New Item</button>
-            <button className="remove-done" onClick={removeCompleteItems}>Remove complete items</button>
-        </div>
+            <div className="actions">
+                <input
+                    value={newTodoDescription}
+                    onChange={updateNewTodo}
+                    onKeyPress={keyPress}
+                    placeholder="Enter new todo and press enter" />
+            </div>
+        </div >
     )
 }
 
