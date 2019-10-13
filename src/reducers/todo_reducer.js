@@ -1,3 +1,5 @@
+const uuidv1 = require('uuid/v1');
+
 const todoReducer = (todos, action) => {
     const { type, payload } = action;
 
@@ -13,7 +15,7 @@ const todoReducer = (todos, action) => {
             });
         case 'ADD':
             const { description } = payload;
-            const id = todos.length + 1; // guid ?
+            const id = uuidv1();
             const newTodo = { id, description, done: false }
             return ([...todos, newTodo]);
         case 'TOGGLE_DONE':

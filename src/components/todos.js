@@ -2,6 +2,7 @@ import React, { useState, useReducer } from 'react';
 import TodoItem from './todo-item';
 import mock_todos from '../mock-data/mock_todos';
 import todo_reducer from '../reducers/todo_reducer';
+import { FiDelete } from 'react-icons/fi';
 
 const Todos = () => {
     const [newTodoDescription, setNewTodoDescription] = useState('');
@@ -40,6 +41,10 @@ const Todos = () => {
         dispatch({ type: "TOGGLE_DONE", payload: { toggleTodo } })
     };
 
+    const removeDone = () => {
+        dispatch({ type: "REMOVE_DONE" })
+    };
+
     return (
         <div>
             {
@@ -55,6 +60,7 @@ const Todos = () => {
                     onChange={updateNewTodo}
                     onKeyPress={keyPress}
                     placeholder="Enter new todo and press enter" />
+                <div className="remove-done"><FiDelete onClick={removeDone} /></div>
             </div>
         </div >
     )
