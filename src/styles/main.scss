@@ -1,3 +1,5 @@
+@import "mixins";
+
 body {
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -10,11 +12,12 @@ body {
     padding: 15px;
     align-content: center;
     display: flex;
+    margin: 5px;
 }
 
 .todo-header{
     font-size: 20px;
-    width:97%;
+    width:100%;
 }
 
 .todo-header span {
@@ -23,7 +26,6 @@ body {
     border: 4px solid white;
     padding:4px;
     border-radius: 15px;
-   
 }
 
 .flex-container {
@@ -37,7 +39,8 @@ body {
 }
 
 .flex-container:hover {
-    background-color: lightgreen;
+
+    background-color: darken(lightblue, 15);
 }
 
 .desc {
@@ -74,7 +77,7 @@ body {
     outline: 0;
     background: transparent;
     border-bottom: 1px solid lightslategrey;
-    width: 95%;
+    width: 100%;
     margin: 4px 0;
 }
 
@@ -82,4 +85,5 @@ body {
     align-content: center;
     font-size: 1.5em;
     color: red;
+    margin-right: 15px;
 }
