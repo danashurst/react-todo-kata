@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TodoItem from './todo-item';
+import { TODO_ADD, TODO_DELETE_TASK, TODO_EDIT, TOGGLE_DONE } from '../reducers/todo-reducer';
+import TodoContext from '../contexts/TodoContext';
 
-const Todos = ({ todos, onAdd, onEdit, onDelete, onComplete, removeDone }) => {
+const Todos = () => {
+
+    const [todos, dispatch] = useContext(TodoContext);
     const [newTodoDescription, setNewTodoDescription] = useState('');
 
     const updateNewTodo = (e) => {
@@ -18,15 +22,28 @@ const Todos = ({ todos, onAdd, onEdit, onDelete, onComplete, removeDone }) => {
         if (newTodoDescription == null || newTodoDescription === '') { return; }
 
         setNewTodoDescription('');
-        onAdd(newTodoDescription);
+        dispatch({ type: TODO_ADD, payload: { description: newTodoDescription } });
     }
+
+    const deleteTodo = (deleteTodo) => {
+        dispatch({ type: TODO_DELETE_TASK, payload: { deleteTodo } });
+    }
+
+    const editTodo = (editTodo, editDescription) => {
+        dispatch({ type: TODO_EDIT, payload: { editTodo, editDescription } });
+    }
+
+    const toggleDone = (toggleTodo) => {
+        dispatch({ type: TOGGLE_DONE, payload: { toggleTodo } })
+    };
+
 
     return (
         <div>
             {
                 todos.map(item => {
                     return (
-                        <TodoItem item={item} key={item.id} onEdit={onEdit} onDelete={onDelete} onComplete={onComplete} />
+                        <TodoItem item={item} key={item.id} onEdit={editTodo} onDelete={deleteTodo} toggleDone={toggleDone} />
                     )
                 })
             }
