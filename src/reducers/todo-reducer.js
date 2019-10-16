@@ -4,7 +4,7 @@ export const TODO_ADD = 'TODO_ADD';
 export const TODO_DELETE_TASK = 'TODO_DELETE_TASK';
 export const TODO_EDIT = 'TODO_EDIT';
 export const TODO_DELETE_DONE = 'TODO_DELETE_DONE';
-export const TOGGLE_DONE = 'TOGGLE_DONE';
+export const TODO_TOGGLE_DONE = 'TODO_TOGGLE_DONE';
 
 const todoReducer = (todos, action) => {
     const { type, payload } = action;
@@ -27,7 +27,7 @@ const todoReducer = (todos, action) => {
             const newTodo = { id, description, done: false }
             return ([...todos, newTodo]);
 
-        case TOGGLE_DONE:
+        case TODO_TOGGLE_DONE:
             const { toggleTodo } = payload;
             const toggledTodo = { ...toggleTodo, done: !toggleTodo.done };
             return todos.map(todo => {
@@ -40,8 +40,6 @@ const todoReducer = (todos, action) => {
         default:
             return todos;
     }
-
-    
 }
 
 export default todoReducer;

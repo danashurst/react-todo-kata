@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import TodoItem from './todo-item';
-import { TODO_ADD, TODO_DELETE_TASK, TODO_EDIT, TOGGLE_DONE } from '../reducers/todo-reducer';
+import { TODO_ADD, TODO_DELETE_TASK, TODO_EDIT, TODO_TOGGLE_DONE } from '../reducers/todo-reducer';
 import TodoContext from '../contexts/TodoContext';
 
 const Todos = () => {
@@ -34,7 +34,7 @@ const Todos = () => {
     }
 
     const toggleDone = (toggleTodo) => {
-        dispatch({ type: TOGGLE_DONE, payload: { toggleTodo } })
+        dispatch({ type: TODO_TOGGLE_DONE, payload: { toggleTodo } })
     };
 
 
