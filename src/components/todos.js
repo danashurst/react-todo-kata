@@ -1,29 +1,12 @@
 import React, { useState, useContext } from 'react';
 import TodoTask from './TodoTask';
-import { TODO_ADD, TODO_DELETE_TASK, TODO_EDIT, TODO_TOGGLE_DONE } from '../reducers/todo-reducer';
+import { TODO_DELETE_TASK, TODO_EDIT, TODO_TOGGLE_DONE } from '../reducers/todo-reducer';
 import TodoContext from '../contexts/TodoContext';
+import NewTodo from './NewTodo';
 
 const Todos = () => {
 
     const [todos, dispatch] = useContext(TodoContext);
-    const [newTodoDescription, setNewTodoDescription] = useState('');
-
-    const updateNewTodo = (e) => {
-        setNewTodoDescription(e.target.value)
-    };
-
-    const keyPress = (e) => {
-        if (e.key === 'Enter') {
-            addTodo();
-        };
-    }
-
-    const addTodo = () => {
-        if (newTodoDescription == null || newTodoDescription === '') { return; }
-
-        setNewTodoDescription('');
-        dispatch({ type: TODO_ADD, payload: { description: newTodoDescription } });
-    }
 
     const deleteTodo = (deleteTodo) => {
         dispatch({ type: TODO_DELETE_TASK, payload: { deleteTodo } });
@@ -47,13 +30,7 @@ const Todos = () => {
                     )
                 })
             }
-            <div className="actions">
-                <input
-                    value={newTodoDescription}
-                    onChange={updateNewTodo}
-                    onKeyPress={keyPress}
-                    placeholder="Enter new todo and press enter" />
-            </div>
+            <NewTodo />
         </div >
     )
 }

@@ -15,6 +15,10 @@
     grid-template-areas:
         "desc desc desc desc"
         ". done edit delete";
+        
+    &:hover {
+        background-color: darken(lightblue, 15);
+    }
 }
 
 // desktop
