@@ -1,23 +1,6 @@
-@import "mixins";
-
 body {
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     color: black;
-}
-
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-
-    background-color: lightblue;
-    padding: 5px;
-    margin: 5px;
-}
-
-.flex-container:hover {
-
-    background-color: darken(lightblue, 15);
 }

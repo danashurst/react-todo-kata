@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import TodoTask from './TodoTask';
 import { TODO_DELETE_TASK, TODO_EDIT, TODO_TOGGLE_DONE } from '../reducers/todo-reducer';
 import TodoContext from '../contexts/TodoContext';
 import NewTodo from './NewTodo';
+import './todos.scss';
 
 const Todos = () => {
 
@@ -22,7 +23,7 @@ const Todos = () => {
 
 
     return (
-        <div>
+        <div className="todos-container">
             {
                 todos.map(item => {
                     return (

@@ -5,7 +5,7 @@ import TodosHeader from './components/TodosHeader';
 
 import mockTodos from './mock-data/mock_todos';
 import { TodoProvider } from './contexts/TodoContext';
-import todoReducer, { TODO_DELETE_DONE } from './reducers/todo-reducer';
+import todoReducer from './reducers/todo-reducer';
 
 import './styles/main.scss';
 
