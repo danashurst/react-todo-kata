@@ -1,0 +1,54 @@
+@import '../styles/colors.scss';
+@import '../styles/variables.scss';
+
+// mobile 
+.task-container {
+    margin: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1em 1em 1em;
+    grid-auto-rows:minmax(20px, auto);
+    grid-gap: 5px;
+    background-color: lightblue;
+    align-items: center;
+    align-items: flex-start;
+    grid-template-areas:
+        "desc desc desc desc"
+        ". done edit delete";
+}
+
+// desktop
+@media screen and (min-width: $width-split) {
+    .task-container {
+        margin: 5px;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1em 1em 1em;
+        grid-auto-rows:minmax(20px, auto);
+        grid-gap: 5px;
+        background-color: lightblue;
+        align-items: center;
+        grid-template-areas:
+            "desc done edit delete";
+    }
+}
+
+.desc {
+   grid-area: desc;
+   font-size: 1.1em;
+}
+
+.done {
+    grid-area: done;
+    color: $todo-action-color;
+}
+
+.edit {
+    grid-area: edit;
+    color: $todo-action-color;
+}
+
+ .delete {
+    grid-area: delete;
+    color: $todo-action-color;
+}

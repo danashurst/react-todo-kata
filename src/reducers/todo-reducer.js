@@ -23,7 +23,7 @@ const todoReducer = (todos, action) => {
 
         case TODO_ADD:
             const { description } = payload;
-            const id = uuidv1();
+            const id = uuidv1();  // probably should be passed in
             const newTodo = { id, description, done: false }
             return ([...todos, newTodo]);
 

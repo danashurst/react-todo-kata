@@ -1,0 +1,56 @@
+@import '../styles/variables.scss';
+
+// mobile
+.header-container{
+    background-color: cadetblue;
+    padding: 10px;
+    align-items: center;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0;
+    grid-template-areas:
+        "todo-header remove-done counts";
+}
+
+// desktop
+@media screen and (min-width: $width-split) {
+    .header-container{
+        background-color: cadetblue;
+        padding: 10px;
+        align-items: center;
+        margin: 5px;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas:
+            "todo-header counts remove-done";
+
+        .counts {
+           display: inherit;
+        }
+    }
+}
+
+.todo-header {
+    grid-area: todo-header;
+    justify-self:start;
+    font-size: 20px; 
+    text-align: center;
+    color: white;
+    border: 4px solid white;
+    padding:4px;
+    border-radius: 15px;
+}
+
+.counts {
+    grid-area: counts;
+    justify-self: center;
+    display: none;
+}
+
+.remove-done {
+    grid-area: remove-done;
+    justify-self: end;
+    font-size: 1.5em;
+    color: complement(cadetblue);
+    margin-right: 3px;
+}

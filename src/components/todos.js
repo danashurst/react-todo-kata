@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import TodoItem from './todo-item';
+import TodoTask from './TodoTask';
 import { TODO_ADD, TODO_DELETE_TASK, TODO_EDIT, TODO_TOGGLE_DONE } from '../reducers/todo-reducer';
 import TodoContext from '../contexts/TodoContext';
 
@@ -43,7 +43,7 @@ const Todos = () => {
             {
                 todos.map(item => {
                     return (
-                        <TodoItem item={item} key={item.id} onEdit={editTodo} onDelete={deleteTodo} toggleDone={toggleDone} />
+                        <TodoTask task={item} key={item.id} onEdit={editTodo} onDelete={deleteTodo} onToggleDone={toggleDone} />
                     )
                 })
             }

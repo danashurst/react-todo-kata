@@ -13,5 +13,10 @@ module.exports = [
         id: 3,
         description: 'Get fit',
         done: false
+    },
+    {
+        id: 4,
+        description: 'This is a really long todo task to fill lots of space on the screen',
+        done: false
     }
 ]
