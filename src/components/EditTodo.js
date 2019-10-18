@@ -21,7 +21,7 @@ const EditTodo = ({ task, onEdit }) => {
     return (
         <div className="edit-container">
             <div className="edit-description"><input type="text" value={editDescription} onKeyDown={keyDown} onChange={updateDescription} autoFocus /></div>
-            {/* <div className="edit-instructions">Enter to update, Esc to cancel</div> */}
+            <div className="edit-instructions">Enter to update, Esc to cancel</div>
         </div>
     );
 };

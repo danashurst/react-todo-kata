@@ -18,9 +18,9 @@ const TodoTask = ({ task, onEdit, onDelete, onToggleDone }) => {
 
     if (editDescription == null) { return; }
 
-    task.description = editDescription;
+    task.description = editDescription;   // todo: dispatch only needs task now ?
 
-    onEdit(task)
+    onEdit(task, editDescription);
   }
 
   return (
@@ -31,7 +31,6 @@ const TodoTask = ({ task, onEdit, onDelete, onToggleDone }) => {
         : (<div className="desc" style={{ textDecoration: task.done ? "line-through" : "" }}>{task.description} </div>)
       }
 
-      <div className="edit-instructions">Enter to update, Esc to cancel</div>
       <div className="done"><input type="checkbox" checked={task.done} onChange={() => onToggleDone(task)} /></div>
       <div className="edit"><FiEdit2 onClick={() => onEditTask()} /></div>
       <div className="delete"><FiDelete onClick={() => onDelete(task)} /></div>
