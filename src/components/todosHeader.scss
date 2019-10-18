@@ -1,8 +1,9 @@
 @import '../styles/variables.scss';
+@import '../styles//colors.scss';
 
 // mobile
 .header-container{
-    background-color: cadetblue;
+    background-color: $todo-header-color;
     padding: 10px;
     align-items: center;
     margin: 5px;
@@ -15,7 +16,7 @@
 // desktop
 @media screen and (min-width: $width-split) {
     .header-container{
-        background-color: cadetblue;
+        background-color: $todo-header-color;
         padding: 10px;
         align-items: center;
         margin: 5px;
@@ -51,6 +52,6 @@
     grid-area: remove-done;
     justify-self: end;
     font-size: 1.5em;
-    color: complement(cadetblue);
+    color: complement($todo-header-color);
     margin-right: 3px;
 }

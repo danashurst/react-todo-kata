@@ -1,0 +1,28 @@
+@import '../styles/variables.scss';
+
+.edit-container {
+    display: grid;
+}
+
+// .edit-instructions {
+//     font-size: .8em;
+//     color: grey;
+//     padding: 0;
+//     margin-top: 6px;
+// }
+
+// desktop
+// @media screen and (min-width: $width-split) {
+//     .edit-description input {
+//         width:99%;
+//         font-size: 18px;
+//         // padding: 2px;
+//     }
+// }
+
+// mobile
+.edit-description input {
+    width:100%;
+    font-size: 18px;
+    word-wrap: break-word;
+}

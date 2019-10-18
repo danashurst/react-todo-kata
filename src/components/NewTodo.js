@@ -20,10 +20,13 @@ const NewTodo = () => {
         dispatch({ type: TODO_ADD, payload: { description: newTodoDescription } });
     };
 
-    const keyPress = (e) => {
+    const keyDown = (e) => {
         if (e.key === 'Enter') {
             addTodo();
         };
+        if (e.key === 'Escape') {
+            setNewTodoDescription('');
+        }
     }
 
     return (
@@ -31,7 +34,7 @@ const NewTodo = () => {
             <input
                 value={newTodoDescription}
                 onChange={updateNewTodo}
-                onKeyPress={keyPress}
+                onKeyDown={keyDown}
                 placeholder="Enter new todo and press enter" />
         </div>
     );
